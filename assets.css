@@ -12,7 +12,7 @@ header {
     flex-wrap: wrap;    
     top: 0;    
   }
-.btn-btn-primary {
+.btn-btn-primary, .timer, .nav-link-active-scores {
     background-color: grey;
     width: 250px;
     font-size: 20px;
@@ -22,27 +22,8 @@ header {
     padding: 10px 10px;
     text-align: center;
 }  
-.timer {
-    background-color: grey;
-    width: 250px;
-    font-size: 20px;
-    color:black;
-    border: 1px solid black;
-    margin: 10px 40px 10px 0px;
-    padding: 10px 10px;
-    text-align: center;
-}
 
-.highscore {
-    background-color: grey;
-    width: 250px;
-    font-size: 20px;
-    color: black;
-    border: 1px solid black;
-    margin: 10px 40px 10px 0px;
-    padding: 10px 10px;
-    text-align: center;
-}
+
 .button {
     background-color: gray;
 }

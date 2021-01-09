@@ -1,35 +1,28 @@
 //GIVEN I am taking a code quiz
 //WHEN I click the start button
 //THEN a timer starts and I am presented with a question
-////starting screen
-//var counterValue = 60;
+//starting screen
+var countdown = function() {
+var startQuizBtn = document.querySelector("#start");
 
-//function welcome() {
-    
-//window.onload = function() {
-    //this.welcome();
-//};
+}
 
-var timer= function() {
+function welcome() {
+    //mainContent
+  document.getElementById("startQuizBtn").addEventListener("click", function() {question(i)});
+  document.getElementById("startQuizBtn").addEventListener("click", function() {countdown()});
 
-document.getElementById("startQuiz").addEventListener("click", function() {question(i)});
 //timer function
- document.getElementById("startQuiz").addEventListener("click", function() {timer()});
-
-window.onload = function(){
-
-    timer.addEventListener("click", function() {
-
-    counterValue -= 1;
-    $("#timer-value").html(counterValue)
-
-    if (counterValue <= 0) {
-        clearInterval(timer)
-        displayScore()
-    }
+var seconds = document.getElementById("countdown").textContent;
+var countdown = setInterval(function() {
+    seconds--;
+    document.getElementById("countdown").textContent = seconds;
+    if (seconds === 0) clearInterval(countdown);
+    
+    
 },1000)
 }
-}
+ 
  //WHEN I answer a question
 //THEN I am presented with another question
 //WHEN I answer a question incorrectly
@@ -39,7 +32,7 @@ window.onload = function(){
 //WHEN the game is over
 //THEN I can save my initials and score
 // creating an array and passing the number, questions, options, and answers
-
+//document.getElementById("startQuiz").addEventListener("click");
 
 
 function Quiz(questions) {
@@ -128,7 +121,7 @@ var questions = [
     new Question("Webdevtrick.com is about..", ["Web Design", "Graphic Design", "SEO & Development", "All"], "All")
     
 ];
- 
+ console.log(showScores)
 // create quiz
 var quiz = new Quiz(questions);
  
