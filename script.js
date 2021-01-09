@@ -1,19 +1,35 @@
 //GIVEN I am taking a code quiz
 //WHEN I click the start button
 //THEN a timer starts and I am presented with a question
-var start = document.getElementById("start");
+////starting screen
+//var counterValue = 60;
 
+//function welcome() {
+    
+//window.onload = function() {
+    //this.welcome();
+//};
 
+var timer= function() {
 
-function changeValue() {
-    document.getElementById("timer").innerHTML = --value;
+document.getElementById("startQuiz").addEventListener("click", function() {question(i)});
+//timer function
+ document.getElementById("startQuiz").addEventListener("click", function() {timer()});
+
+window.onload = function(){
+
+    timer.addEventListener("click", function() {
+
+    counterValue -= 1;
+    $("#timer-value").html(counterValue)
+
+    if (counterValue <= 0) {
+        clearInterval(timer)
+        displayScore()
+    }
+},1000)
 }
- var timerInterval = null;
- function start() {
-     stop(); //stop the previous counting
-     value = 0;
-     timerInterval = setInterval(changeValue, 1000);
- }
+}
  //WHEN I answer a question
 //THEN I am presented with another question
 //WHEN I answer a question incorrectly
@@ -23,7 +39,7 @@ function changeValue() {
 //WHEN the game is over
 //THEN I can save my initials and score
 // creating an array and passing the number, questions, options, and answers
-//document.getElementById("startQuiz").addEventListener("click");
+
 
 
 function Quiz(questions) {
