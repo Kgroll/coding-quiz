@@ -23,13 +23,10 @@ startQuizBtn.click(function() {
    questionContainer.show();
    questionContainerBtn.show();
    addProgress.show();
-
-  // timer = setInterval
-//var myFunction = startQuiz();   
-//document.getElementById("startQuiz").addEventListener("click", myFunction);
-//function myFunction() {
-    //document.getElementById("startQuiz").innerHTML = "Good Luck!";
 })
+//GIVEN I am taking a code quiz
+//WHEN I click the start button
+//THEN a timer starts and I am presented with a question
 
 //timer
 var timeLeft = 60
@@ -46,19 +43,9 @@ button.addEventListener("click", function() {
         if (timeLeft === 0) {
             clearInterval(clock);
         }
-    }, 1000);
-})
-
+        }, 1000);
+    })
 });
-
-//GIVEN I am taking a code quiz
-//WHEN I click the start button
-//THEN a timer starts and I am presented with a question
-
-
-
-//var questionContainer = document.querySelector('#question-container')
-
 
  
  //WHEN I answer a question
@@ -70,8 +57,8 @@ button.addEventListener("click", function() {
 //WHEN the game is over
 //THEN I can save my initials and score
 // creating an array and passing the number, questions, options, and answers
-//document.getElementById("startQuiz").addEventListener("click");
 
+//quiz questions start
 
 function Quiz(questions) {
     this.score = 0;
@@ -123,7 +110,7 @@ function populate() {
             element.innerHTML = choices[i];
             guess("btn" + i, choices[i]);
         }
- 
+ console.log(showScores);
         showProgress();
     }
 };
@@ -167,72 +154,60 @@ var quiz = new Quiz(questions);
 populate();
 //start.addEventListener("click", startQuiz);
 
+function isCorrectAnswer() {
+    var answer = questions[questionIndex].answer;
+    userAnswer = this.innerHTML;
 
-//save high score
-    var scoreList = document.querySelector("#highScore-list");
-    var storedHighscoresString = localStorage.getItem("highscores"); 
-    var highscores = {
-        initials : [],
-        scores : [],
+    if (userAnswer === answer) {
+        console.log ("answer correct");
+    } else if (userAnswer !== answer) {
+        removeTime();
+        console.log("answer incorrect");
     }
-
-    function getScores(){
-
-    } 
-    if (storedHighscoresString !== null) {
-
-        var storedHighscores = JSON.parse(storedHighscoresString);
-        highscores.initials = storedHighscores.initials;
-        highscores.scores = storedHighscores.scores;
-    }
-    else {
-        highscores.initials = [];
-        highscores.scores = [];
-    }
-
-
-    function renderScores() {
-        scoreList.innerHTML = "";
-        
-        getScores();
-
-        for (var i = 0; i <highscores.initials.length; i++) {
-            var listEl = document.createElement("li");
-            var pEl = document.createElement("p");
-            pEl.setAttribute("class", "highscore");
-            pEl.textContent = (i + 1) + ". " + highscores.initials[i] + " - " + highscores.scores[i];
-
-            listEl.appendChild(pEl);
-            scoreList.appendChild(listEl);
-        }
-    }
-    var saveScores = 
-    function saveScore(newInitials, newScore) {
-        getScores();
-
-        highscores.initials.push(newInitials);
-        highscores.scores.push(newScore);
-
-        var highscoresString = JSON.stringify(highscores);
-        localStorage.setItem("highscores", highscoresString);
-    }
-    function clearScores() {
-        localStorage.removeItem("highscores");
-        renderScores();
-    }
-    if (scoreList !== null) {
-        renderScores();
-    }
-
-    var allScores = localStorage.getItem("allScores");
-    allScores = JSON.parse(allScores);
-    
-    if (allScores !== null) {
-        for (var i = 0; i < allScores.length; i++) { 
-            var createLi = document.createElement("li");
-            createLi.textContet = allScores[i].initials + " " + allScores[i].score;
-            highScore.append(createLi);
-            console.log(highscores);
+    questionIndex++;
+    if (questionIndex === questions.length) {
+        console.log(getScore());
+        window.location.href = "index2.html";
+        }  
+        displayQuestion();
+        console.log("finish isCorrectAnswer");
+      }      
+      var secondsRemaining = questions.length * 5   
+      function removeTime() {
+        secondsRemaining -= 15;
       }
-    }
+     
+      function getScore() {
+        return secondsRemaining;
+      }
+      localStorage.setItem("Score", secondsRemaining);
+      
+      function getUserInfo() {}
+      
+      function saveScore() {}
+      
+      console.log();  
+        
 
+
+     
+//save high score
+ var getUserName;
+
+ //function getUserName() {
+  //   userName = prompt("Please enter your initials:");
+  //   localStorage.setItem("Initials", userName);
+
+     //if ((userName = "")) {
+      //   alert("Please enter your initials")
+     
+    
+ 
+ //getUserName();
+
+ //function displayHighscores() {
+    // document.getElementById("Initials").innerHTML = localStorage.getItem("Initials");
+    // document.getElementById("scores").innerHTML = localStorage.getItem("Scores");
+     
+
+//displayHighscores();
