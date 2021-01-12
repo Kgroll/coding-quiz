@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Code Quiz</title>
     <link rel="stylesheet" href="assets.css">
-
+  
     
 
 
@@ -16,30 +16,26 @@
 
 
 <header>
-    <div class="nav">
-        <div class="nav-item">
-          <button type ="button"class="nav-link-active-scores" ><a href="index2.html">View Highscores</a></button>
-        </div>
-
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="index2.html">View Highscores</a>
+        <div class="navbar-nav ml-auto">
+          <div class="nav-item">Time: <span id="countdown">60</span></div>        
+          </div>
+      </nav>
+      <div class="col-md-6" id="contentBox">
     
     <!-- start Quiz button -->
-    <h1>Welcome to Code Quiz!</h1><br />
-    <h3>If you think you have what it takes, go ahead and click the start button to see how you do!</h3><br/>
-    <button type="button" class="btn-btn-primary" id="startQuizBtn">Start Quiz!</button>
-        
-    
-       <h2><button type= "button" class="timer">Time left: <span id= "countdown">60</span></button></div></h2> 
-        
-        
-   
+    <div id = "welcome">
+    <h1>Welcome to Code Quiz!</h1><hr>
+    <h3>If you think you have what it takes, go ahead and click the start button to see how you do!</h3>
+    <div class="button-container">
+        <button type = "button" class = 'btn btn-primary' id ="startQuiz">Start Quiz</button>
+      </div>       
 </header>
 
-
-<body>   
-    
+<body>  
     <div class= "grid">
-        <div id="quiz">
-           
+        <div id="quiz">           
 
             <p id="question"></p>
 
@@ -49,15 +45,15 @@
                 <button id="btn2"><span id="choice2"></span></button>
                 <button id="btn3"><span id="choice3"></span></button>
             </div>
-            <footer>
-                <p id="progress">Question x of y</p>
-            </footer>
+            
+        <footer>
+            <p id="progress">Question x of y</p>
+        </footer>
             
         </div>
     </div>        
-         
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>    
     <script src="script.js"></script>
-
-    <script src="script2.js"></script>
+    
     </body>
 </html>

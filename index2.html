@@ -2,23 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets2.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
     <link rel="stylesheet" href="assets.css">
+   
     <title>Highscores</title>
 </head>
 <body>
 
-    <div id="wrapper">
-        <div id="countdown"></div>
-
-        <div id="questionsDiv">
+    <div class="container">
+        <div class="row">
+            <div class="offset-lg-3"></div>
+            <div class="col-12 col-lg-6">   
             <h1>Highscores</h1>
-            <ul id="highScore"></ul>
-            <button type = "button" class ="goBack">Go Back</button>
-            <button type ="button" class = "clear" value="reset">Clear Highscore</button>
+            <ul id="highScore-list"></ul>
+        <div class="button-container">
+            <button id = "goBack" onclick="window.location = 'index.html'">Go Back</button>
+            <button id = "clear-highscores" onclick="clearScores();">Clear Highscore</button>
         </div>
     </div>
-    <script src="script2.js"></script>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>  
+    <script src="script.js"></script>       
+    
 </body>
 </html>

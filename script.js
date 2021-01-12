@@ -1,26 +1,73 @@
+//var count = 75;
+//var myTimer;
+
+//var myClock = function () {
+ //   count--
+ //   timerNumber.innerHTML = count;
+ ////   if (count === 0) {
+ /////       clearInterval(myTimer);
+ //   }
+//}
+
+//function clock() {
+  //  instructions.classList.add('hide')
+  //  questionContainer.classList.remove('hide')
+   // myTimer = setInterval(myClock, 1000);
+//}
+$(document).ready(function() {  
+    var welcomeBox = $("#welcome");
+    var questionContainer = $("#question");
+    var endingScoreBox = $("#endingScoreBox");
+    var highScoresBox = $("#highScores");
+    var scores = JSON.parse(localStorage.getItem("scores") || "[]");
+
+
+   
+   
+    var startQuizBtn = $("#startQuiz");
+    var highScoresBtn = $("#highScoreBtn");
+welcomeBox.show();
+startQuizBtn.click(function() {
+    welcomeBox.hide();
+   // questionContainer.show();
+});
+
+//timer
+
+
+
+
 //GIVEN I am taking a code quiz
 //WHEN I click the start button
 //THEN a timer starts and I am presented with a question
 //starting screen
-var countdown = function() {
-var startQuizBtn = document.querySelector("#start");
 
-}
 
-function welcome() {
-    //mainContent
-  document.getElementById("startQuizBtn").addEventListener("click", function() {question(i)});
-  document.getElementById("startQuizBtn").addEventListener("click", function() {countdown()});
+//var questionContainer = document.querySelector('#question-container')
 
-//timer function
 var seconds = document.getElementById("countdown").textContent;
 var countdown = setInterval(function() {
     seconds--;
     document.getElementById("countdown").textContent = seconds;
-    if (seconds === 0) clearInterval(countdown);
-    
-    
-},1000)
+    if(seconds <= 0) clearInterval(countdown);
+}, 1000);
+
+
+
+
+
+function setStatusClass(element, correct) {
+    clearStatusClass(element)
+    if (correct) {
+        element.classList.add('correct')
+    } else {
+        element.classList.add('wrong')
+        element.addEventListener('click', () => {
+            clearInterval(countdown)
+            timerNumber.innerHTML = -5
+            myTimer = setInterval(myClock, 1000);
+        })
+    }
 }
  
  //WHEN I answer a question
@@ -107,7 +154,7 @@ function showProgress() {
  
 function showScores() {
     var gameOverHTML = "<h1>Result</h1>";
-    gameOverHTML += "<h2 id='score'> Your scores: " + quiz.score + "</h2>";
+    gameOverHTML += "<h2 id='score'> Your score is: " + quiz.score + "</h2>";
     var element = document.getElementById("quiz");
     element.innerHTML = gameOverHTML;
 };
@@ -128,3 +175,73 @@ var quiz = new Quiz(questions);
 // display quiz
 populate();
 //start.addEventListener("click", startQuiz);
+
+
+//save high score
+    var scoreList = document.querySelector("#highScore-list");
+    var storedHighscoresString = localStorage.getItem("highscores"); 
+    var highscores = {
+        initials : [],
+        scores : [],
+    }
+
+    function getScores(){
+
+    } 
+    if (storedHighscoresString !== null) {
+
+        var storedHighscores = JSON.parse(storedHighscoresString);
+        highscores.initials = storedHighscores.initials;
+        highscores.scores = storedHighscores.scores;
+    }
+    else {
+        highscores.initials = [];
+        highscores.scores = [];
+    }
+
+
+    function renderScores() {
+        scoreList.innerHTML = "";
+        
+        getScores();
+
+        for (var i = 0; i <highscores.initials.length; i++) {
+            var listEl = document.createElement("li");
+            var pEl = document.createElement("p");
+            pEl.setAttribute("class", "highscore");
+            pEl.textContent = (i + 1) + ". " + highscores.initials[i] + " - " + highscores.scores[i];
+
+            listEl.appendChild(pEl);
+            scoreList.appendChild(listEl);
+        }
+    }
+
+    function saveScore(newInitials, newScore) {
+        getScores();
+
+        highscores.initials.push(newInitials);
+        highscores.scores.push(newScore);
+
+        var highscoresString = JSON.stringify(highscores);
+        localStorage.setItem("highscores", highscoresString);
+    }
+    function clearScores() {
+        localStorage.removeItem("highscores");
+        renderScores();
+    }
+    if (scoreList !== null) {
+        renderScores();
+    }
+
+    var allScores = localStorage.getItem("allScores");
+    allScores = JSON.parse(allScores);
+    
+    if (allScores !== null) {
+        for (var i = 0; i < allScores.length; i++) { 
+            var createLi = document.createElement("li");
+            createLi.textContet = allScores[i].initials + " " + allScores[i].score;
+            highScore.append(createLi);
+            console.log(highscores);
+      }
+    }
+})
