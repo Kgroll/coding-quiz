@@ -19,22 +19,23 @@
     <nav class="navbar navbar-expand-lg navbar-light">
         <a class="navbar-brand" href="index2.html">View Highscores</a>
         <div class="navbar-nav ml-auto">
-          <div class="nav-item">Time: <span id="countdown">60</span></div>        
+          <div class="nav-item" id = "timer">Time: <span id="countdown">60</span></div>        
           </div>
       </nav>
       <div class="col-md-6" id="contentBox">
     
     <!-- start Quiz button -->
-    <div id = "welcome">
+    <div id = "welcome" style="display:none">
+
     <h1>Welcome to Code Quiz!</h1><hr>
-    <h3>If you think you have what it takes, go ahead and click the start button to see how you do!</h3>
+    <h3>If you think you have what it takes, go ahead and click the start button to see how you do! Be aware you will lose 10 seconds for wrong answers!!</h3>
     <div class="button-container">
         <button type = "button" class = 'btn btn-primary' id ="startQuiz">Start Quiz</button>
       </div>       
 </header>
 
 <body>  
-    <div class= "grid">
+    <div class= "container">
         <div id="quiz">           
 
             <p id="question"></p>

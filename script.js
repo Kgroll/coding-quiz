@@ -1,74 +1,65 @@
-//var count = 75;
-//var myTimer;
 
-//var myClock = function () {
- //   count--
- //   timerNumber.innerHTML = count;
- ////   if (count === 0) {
- /////       clearInterval(myTimer);
- //   }
-//}
-
-//function clock() {
-  //  instructions.classList.add('hide')
-  //  questionContainer.classList.remove('hide')
-   // myTimer = setInterval(myClock, 1000);
-//}
 $(document).ready(function() {  
     var welcomeBox = $("#welcome");
+    var startQuizBtn = $("#startQuiz");
     var questionContainer = $("#question");
+    var questionContainerBtn = $("#btn0, #btn1, #btn2, #btn3");
+    var addProgress = $("#progress");
+    var startTimer = $("#countdown");
     var endingScoreBox = $("#endingScoreBox");
     var highScoresBox = $("#highScores");
     var scores = JSON.parse(localStorage.getItem("scores") || "[]");
-
-
-   
-   
-    var startQuizBtn = $("#startQuiz");
     var highScoresBtn = $("#highScoreBtn");
+
+ //welcome screen          
 welcomeBox.show();
+questionContainer.hide();
+questionContainerBtn.hide();
+addProgress.hide();
+//start quiz
+//startQuiz.onclick = startTimer;
 startQuizBtn.click(function() {
-    welcomeBox.hide();
-   // questionContainer.show();
-});
+    welcomeBox.hide();    
+   questionContainer.show();
+   questionContainerBtn.show();
+   addProgress.show();
+
+  // timer = setInterval
+//var myFunction = startQuiz();   
+//document.getElementById("startQuiz").addEventListener("click", myFunction);
+//function myFunction() {
+    //document.getElementById("startQuiz").innerHTML = "Good Luck!";
+})
 
 //timer
+var timeLeft = 60
+var timer = document.getElementById("timer")
+timer.innerHTML = timeLeft;
+//button on click
+var button = document.getElementById("startQuiz")
+button.addEventListener("click", function() {
 
+    var clock = setInterval(function() {
 
+        timeLeft--;
+        timer.innerHTML = timeLeft;
+        if (timeLeft === 0) {
+            clearInterval(clock);
+        }
+    }, 1000);
+})
 
+});
 
 //GIVEN I am taking a code quiz
 //WHEN I click the start button
 //THEN a timer starts and I am presented with a question
-//starting screen
+
 
 
 //var questionContainer = document.querySelector('#question-container')
 
-var seconds = document.getElementById("countdown").textContent;
-var countdown = setInterval(function() {
-    seconds--;
-    document.getElementById("countdown").textContent = seconds;
-    if(seconds <= 0) clearInterval(countdown);
-}, 1000);
 
-
-
-
-
-function setStatusClass(element, correct) {
-    clearStatusClass(element)
-    if (correct) {
-        element.classList.add('correct')
-    } else {
-        element.classList.add('wrong')
-        element.addEventListener('click', () => {
-            clearInterval(countdown)
-            timerNumber.innerHTML = -5
-            myTimer = setInterval(myClock, 1000);
-        })
-    }
-}
  
  //WHEN I answer a question
 //THEN I am presented with another question
@@ -215,7 +206,7 @@ populate();
             scoreList.appendChild(listEl);
         }
     }
-
+    var saveScores = 
     function saveScore(newInitials, newScore) {
         getScores();
 
@@ -244,4 +235,4 @@ populate();
             console.log(highscores);
       }
     }
-})
+
