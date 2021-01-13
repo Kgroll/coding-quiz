@@ -7,6 +7,15 @@
 //WHEN the game is over
 //THEN I can save my initials and score
 // creating an array and passing the number, questions, options, and answers
+//WHEN I answer a question
+//THEN I am presented with another question
+//WHEN I answer a question incorrectly
+//THEN time is subtracted from the clock
+//WHEN all questions are answered or the timer reaches 0
+//THEN the game is over
+//WHEN the game is over
+//THEN I can save my initials and score
+// creating an array and passing the number, questions, options, and answers
 
 
 $(document).ready(function() {  
@@ -41,7 +50,7 @@ startQuizBtn.click(function() {
 //THEN a timer starts and I am presented with a question
 
 //timer
-var timeLeft = 5
+var timeLeft = 60
 var timer = document.getElementById("timer")
 timer.innerHTML = timeLeft;
 //button on click
@@ -185,4 +194,3 @@ function isCorrectAnswer() {
      
 
 //displayHighscores();
-
