@@ -1,7 +1,4 @@
 
-
-
-
 Quiz.prototype.getQuestionIndex = function() {
     return this.questions[this.questionIndex];
 }

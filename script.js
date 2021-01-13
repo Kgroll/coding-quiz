@@ -185,3 +185,4 @@ function isCorrectAnswer() {
      
 
 //displayHighscores();
+
